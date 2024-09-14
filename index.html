@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Custom Typing Test</title>
+    <title>Manifest Speed Typing 2024</title>
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -15,7 +15,7 @@
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            overflow: auto; /* Mengizinkan scroll */
+            overflow: auto;
         }
         .container {
             text-align: center;
@@ -25,35 +25,68 @@
         h1 {
             font-size: 2.5em;
             margin-bottom: 20px;
-            color: #00bcd4;
-            text-shadow: 0 0 10px rgba(0, 188, 212, 0.7);
+            background: linear-gradient(to bottom right, rgb(1, 196, 255), rgb(255, 0, 255)); /* Gradien untuk teks */
+            -webkit-background-clip: text;
+            color: transparent; /* Agar gradien terlihat pada teks */
+            text-shadow: 0 0 15px rgba(1, 196, 255, 0.7), 0 0 20px rgba(255, 0, 255, 0.7); /* Warna bayangan teks sesuai gradien */
         }
         .header-image {
-            width: 100%;
+            width: 50%;
             max-height: 200px;
             object-fit: cover;
-            border-radius: 15px;
-            margin-bottom: 20px;
+        }
+        /* Membuat iframe memiliki border gradien */
+        .iframe-container {
+            position: relative;
+            width: 100%;
+            height: 300px; /* Sesuaikan tinggi */
+            border-radius: 10px;
+            overflow: hidden;
+            border: 6px solid; /* Ukuran border */
+            border-image-slice: 1;
+            border-image-source: linear-gradient(to bottom right, rgb(1, 196, 255), rgb(255, 0, 255)); /* Gradien pada border */
+            box-shadow: 0 0 15px rgba(1, 196, 255, 0.7), 0 0 20px rgba(255, 0, 255, 0.7); /* Gradien pada bayangan */
         }
         iframe {
-            border: 2px solid #00bcd4;
-            border-radius: 10px;
             width: 100%;
-            height: 700px;
-            box-shadow: 0 0 15px rgba(0, 188, 212, 0.5);
+            height: 100%;
+            border: none; /* Menghilangkan border asli iframe */
         }
         footer {
             margin-top: 20px;
             color: #888;
         }
+        /* Tombol untuk navigasi */
+        .button {
+        margin-top: 20px;
+        padding: 10px 20px;
+        background: linear-gradient(to bottom right, rgb(1, 196, 255), rgb(255, 0, 255)); /* Gradien latar belakang tombol */
+        border: none;
+        border-radius: 5px;
+        color: white;
+        cursor: pointer;
+        font-size: 1.2em;
+        box-shadow: 0 0 15px rgba(1, 196, 255, 0.7), 0 0 20px rgba(255, 0, 255, 0.7); /* Gradien pada bayangan */
+    }
+
+    .button:hover {
+        background: linear-gradient(to bottom right, rgb(255, 0, 255), rgb(1, 196, 255)); /* Gradien latar belakang tombol saat hover */
+    }
+
     </style>
 </head>
 <body>
     <div class="container">
         <!-- Ganti 'images/Logo.jpg' dengan path gambar lokal yang benar -->
         <img src="images/Logo.jpg" alt="Futuristic Header" class="header-image">
-        <h1>Typing Test</h1>
-        <iframe width="640" height="600" src="https://10fastfingers.com/widgets/ttembeddable/?dur=60&rand=1&words=about|above|add|after|again|air|all|almost|along|also|always|America|an|and|animal|another|answer|any|are|around|as|ask|at|away|back|be|because|been|before|began|begin|being|below|between|big|book|both|boy|but|by|call|came|can|car|carry|change|children|city|close|come|could|country|cut|day|did|different|do|does|don%27t|down|each|earth|eat|end|enough|even|every|example|eye|face|family|far|father|feet|few|find|first|follow|food|for|form|found|four|from|get|girl|give|go|good|got|great|group|grow|had|hand|hard|has|have|he|head|hear|help|her|here|high|him|his|home|house|how|idea|if|important|in|Indian|into|is|it|its|it%27s|just|keep|kind|know|land|large|last|later|learn|leave|left|let|letter|life|light|like|line|list|little|live|long|look|made|make|man|many|may|me|mean|men|might|mile|miss|more|most|mother|mountain|move|much|must|my|name|near|need|never|new|next|night|no|not|now|number|of|off|often|oil|old|on|once|one|only|open|or|other|our|out|over|own|page|paper|part|people|picture|place|plant|play|point|put|question|quick|quickly|quite|read|really|right|river|run|said|same|saw|say|school|sea|second|see|seem|sentence|set|she|should|show|side|small|so|some|something|sometimes|song|soon|sound|spell|start|state|still|stop|story|study|such|take|talk|tell|than|that|the|their|them|then|there|these|they|thing|think|this|those|thought|three|through|time|to|together|too|took|tree|try|turn|two|under|until|up|us|use|very|walk|want|was|watch|water|way|we|well|went|were|what|when|where|which|while|white|who|why|will|with|without|word|work|world|would|write|year|you|young|your" frameborder="0"></iframe>
+        <h1>Manifest Speed Typing Test</h1>
+        <!-- Bungkus iframe dalam div untuk membuat border gradien -->
+        <div class="iframe-container">
+            <iframe src="https://10fastfingers.com/widgets/ttembeddable/?dur=60&rand=1&words=teknologi|inovasi|efisiensi|produktivitas|keyboard|kinerja|kecepatan|mengetik|keterampilan|akurasi|latihan|tantangan|ujian|teks|penulisan|cepat|belajar|kuasai|tingkatkan|fokus|komputer|software|aplikasi|digital|internet|data|jaringan|hardware|pemrograman|sistem|informasi|pengembangan|robotik|kreativitas|ide|strategi|implementasi|analisis|visualisasi|proyek|ekspansi|metode|teori|praktik|manajemen|desain|pengujian|keamanan|akses|pengguna" scrolling="no"></iframe>
+        </div>
+
+        <!-- Tombol untuk navigasi ke halaman send.html -->
+        <button class="button" onclick="window.location.href='send.html'">Kirim Data</button>
     </div>
 </body>
 </html>

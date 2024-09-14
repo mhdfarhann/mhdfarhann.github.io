@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Peserta</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .form-container {
+            background: linear-gradient(to bottom right, rgb(1, 196, 255), rgb(255, 0, 255));
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(1, 196, 255, 0.7), 0 0 20px rgba(255, 0, 255, 0.7);
+            width: 100%;
+            max-width: 600px;
+            align-items: center;
+        }
+        h1 {
+            font-size: 2em;
+            text-align: center;
+            color: #fff;
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #fff;
+            text-align: center;
+        }
+        input {
+            width: 90%;
+            padding: 10px;
+            margin-left: 20px;
+            margin-bottom: 10px;
+            border: none;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(1, 196, 255, 0.3);
+        }
+        button {
+            width: 90%;
+            padding: 10px;
+            background-color: #00bcd4;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            cursor: pointer;
+            font-size: 1.1em;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #008c9e;
+        }
+        .button-container {
+            text-align: center;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h1>Data Peserta</h1>
+        <form id="participantForm">
+            <label for="name">Nama</label>
+            <input type="text" id="name" name="name" required>
+            
+            <label for="participantNumber">Nomor Peserta</label>
+            <input type="text" id="participantNumber" name="participantNumber" required>
+            
+            <label for="wpm">WPM (Words per Minute)</label>
+            <input type="text" id="wpm" name="wpm" required>
+            
+            <div class="button-container">
+                <button type="submit">Submit</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbzJ_AQGvw0YgPBhXX___UF2_COaT0941ODUe7yvKb0hnUNdGWhjz0VOKK-oBjdYMmak/exec';  // Ganti dengan URL Apps Script yang sudah di-deploy
+        const form = document.getElementById('participantForm');
+
+        form.addEventListener('submit', e => {
+            e.preventDefault();
+            const formData = {
+                name: document.getElementById('name').value,
+                participantNumber: document.getElementById('participantNumber').value,
+                wpm: document.getElementById('wpm').value
+            };
+
+            fetch(scriptURL, {
+                method: 'POST',
+                body: JSON.stringify(formData)
+            })
+            .then(response => response.json())
+            .then(result => {
+                if (result.status === 'success') {
+                    alert('Data berhasil dikirim!');
+                } else {
+                    alert('Terjadi kesalahan saat mengirim data.');
+                }
+            })
+            .catch(error => console.error('Error:', error));
+        });
+    </script>
+</body>
+</html>
