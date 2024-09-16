@@ -21,71 +21,77 @@
             text-align: center;
             width: 90%;
             max-width: 900px;
+            position: relative;
         }
         h1 {
             font-size: 2.5em;
             margin-bottom: 20px;
-            background: linear-gradient(to bottom right, rgb(1, 196, 255), rgb(255, 0, 255)); /* Gradien untuk teks */
+            background: linear-gradient(to bottom right, rgb(1, 196, 255), rgb(255, 0, 255));
             -webkit-background-clip: text;
-            color: transparent; /* Agar gradien terlihat pada teks */
-            text-shadow: 0 0 15px rgba(1, 196, 255, 0.7), 0 0 20px rgba(255, 0, 255, 0.7); /* Warna bayangan teks sesuai gradien */
+            color: transparent;
+            text-shadow: 0 0 15px rgba(1, 196, 255, 0.7), 0 0 20px rgba(255, 0, 255, 0.7);
         }
         .header-image {
             width: 50%;
             max-height: 200px;
             object-fit: cover;
         }
-        /* Membuat iframe memiliki border gradien */
+        /* Membuat iframe-container dengan rounded border dan gradien */
         .iframe-container {
             position: relative;
             width: 100%;
-            height: 300px; /* Sesuaikan tinggi */
-            border-radius: 10px;
+            height: 300px;
+            border-radius: 20px; /* Rounded corners */
             overflow: hidden;
-            border: 6px solid; /* Ukuran border */
-            border-image-slice: 1;
-            border-image-source: linear-gradient(to bottom right, rgb(1, 196, 255), rgb(255, 0, 255)); /* Gradien pada border */
-            box-shadow: 0 0 15px rgba(1, 196, 255, 0.7), 0 0 20px rgba(255, 0, 255, 0.7); /* Gradien pada bayangan */
+            background: #fff;
+            box-shadow: 0 0 20px rgba(1, 196, 255, 0.7), 0 0 25px rgba(255, 0, 255, 0.7); /* Shadow untuk gradien */
+            padding: 15px; /* Memberi jarak agar border gradien terlihat */
         }
+
+        /* Tambahkan gradien di sekitar border */
+        .iframe-container::before {
+            content: '';
+            position: absolute;
+            top: -6px;
+            left: -6px;
+            right: -6px;
+            bottom: -6px;
+            background: linear-gradient(to bottom right, rgb(1, 196, 255), rgb(255, 0, 255));
+            z-index: -1;
+            border-radius: 20px; /* Sama dengan iframe-container agar sesuai */
+        }
+
         iframe {
             width: 100%;
             height: 100%;
             border: none; /* Menghilangkan border asli iframe */
         }
-        footer {
-            margin-top: 20px;
-            color: #888;
-        }
-        /* Tombol untuk navigasi */
+
         .button {
-        margin-top: 20px;
-        padding: 10px 20px;
-        background: linear-gradient(to bottom right, rgb(1, 196, 255), rgb(255, 0, 255)); /* Gradien latar belakang tombol */
-        border: none;
-        border-radius: 5px;
-        color: white;
-        cursor: pointer;
-        font-size: 1.2em;
-        box-shadow: 0 0 15px rgba(1, 196, 255, 0.7), 0 0 20px rgba(255, 0, 255, 0.7); /* Gradien pada bayangan */
-    }
+            margin-top: 20px;
+            padding: 10px 20px;
+            background: linear-gradient(to bottom right, rgb(1, 196, 255), rgb(255, 0, 255));
+            border: none;
+            border-radius: 5px;
+            color: white;
+            cursor: pointer;
+            font-size: 1.2em;
+            box-shadow: 0 0 15px rgba(1, 196, 255, 0.7), 0 0 20px rgba(255, 0, 255, 0.7);
+        }
 
-    .button:hover {
-        background: linear-gradient(to bottom right, rgb(255, 0, 255), rgb(1, 196, 255)); /* Gradien latar belakang tombol saat hover */
-    }
-
+        .button:hover {
+            background: linear-gradient(to bottom right, rgb(255, 0, 255), rgb(1, 196, 255));
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <!-- Ganti 'images/Logo.jpg' dengan path gambar lokal yang benar -->
         <img src="images/Logo.jpg" alt="Futuristic Header" class="header-image">
         <h1>Manifest Speed Typing Test</h1>
-        <!-- Bungkus iframe dalam div untuk membuat border gradien -->
         <div class="iframe-container">
             <iframe src="https://10fastfingers.com/widgets/ttembeddable/?dur=60&rand=1&words=teknologi|inovasi|efisiensi|produktivitas|keyboard|kinerja|kecepatan|mengetik|keterampilan|akurasi|latihan|tantangan|ujian|teks|penulisan|cepat|belajar|kuasai|tingkatkan|fokus|komputer|software|aplikasi|digital|internet|data|jaringan|hardware|pemrograman|sistem|informasi|pengembangan|robotik|kreativitas|ide|strategi|implementasi|analisis|visualisasi|proyek|ekspansi|metode|teori|praktik|manajemen|desain|pengujian|keamanan|akses|pengguna" scrolling="no"></iframe>
         </div>
 
-        <!-- Tombol untuk navigasi ke halaman send.html -->
         <button class="button" onclick="window.location.href='send.html'">Kirim Data</button>
     </div>
 </body>
