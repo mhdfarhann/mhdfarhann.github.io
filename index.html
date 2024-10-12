@@ -9,46 +9,55 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
-            background: #ffffff;
+            background: #16051C;
             color: #e0e0e0;
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
             overflow: auto;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(90, 90, 90, 0.1) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(90, 90, 90, 0.1) 0%, transparent 20%);
+            background-attachment: fixed;
         }
         .container {
             text-align: center;
-            width: 90%;
-            max-width: 900px;
+            width: 95%;
+            max-width: 1000px;
             position: relative;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            backdrop-filter: blur(5px);
+            box-shadow: 0 0 30px rgba(255, 255, 255, 0.1);
         }
         h1 {
             font-size: 2.5em;
             margin-bottom: 20px;
-            background: linear-gradient(to bottom right, rgb(1, 196, 255), rgb(255, 0, 255));
+            background: linear-gradient(to bottom right, #00FFFF, #FF00FF);
             -webkit-background-clip: text;
             color: transparent;
-            text-shadow: 0 0 15px rgba(1, 196, 255, 0.7), 0 0 20px rgba(255, 0, 255, 0.7);
+            text-shadow: 0 0 15px rgba(0, 255, 255, 0.7), 0 0 20px rgba(255, 0, 255, 0.7);
         }
         .header-image {
             width: 50%;
             max-height: 200px;
             object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 20px;
         }
-        /* Membuat iframe-container dengan rounded border dan gradien */
         .iframe-container {
             position: relative;
             width: 100%;
-            height: 300px;
-            border-radius: 20px; /* Rounded corners */
+            height: 600px; /* Increased height */
+            border-radius: 20px;
             overflow: hidden;
-            background: #fff;
-            box-shadow: 0 0 20px rgba(1, 196, 255, 0.7), 0 0 25px rgba(255, 0, 255, 0.7); /* Shadow untuk gradien */
-            padding: 15px; /* Memberi jarak agar border gradien terlihat */
+            background: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.3), 0 0 25px rgba(255, 0, 255, 0.3);
+            padding: 15px;
+            margin-top: 20px;
         }
-
-        /* Tambahkan gradien di sekitar border */
         .iframe-container::before {
             content: '';
             position: absolute;
@@ -56,43 +65,69 @@
             left: -6px;
             right: -6px;
             bottom: -6px;
-            background: linear-gradient(to bottom right, rgb(1, 196, 255), rgb(255, 0, 255));
+            background: linear-gradient(45deg, #00FFFF, #FF00FF);
             z-index: -1;
-            border-radius: 20px; /* Sama dengan iframe-container agar sesuai */
+            border-radius: 20px;
+            opacity: 0.5;
         }
-
         iframe {
             width: 100%;
             height: 100%;
-            border: none; /* Menghilangkan border asli iframe */
+            border: none;
         }
-
-        .button {
+        .button, .select-difficulty {
             margin-top: 20px;
             padding: 10px 20px;
-            background: linear-gradient(to bottom right, rgb(1, 196, 255), rgb(255, 0, 255));
+            background: linear-gradient(45deg, #00FFFF, #FF00FF);
             border: none;
             border-radius: 5px;
-            color: white;
+            color: #16051C;
             cursor: pointer;
             font-size: 1.2em;
-            box-shadow: 0 0 15px rgba(1, 196, 255, 0.7), 0 0 20px rgba(255, 0, 255, 0.7);
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.3), 0 0 20px rgba(255, 0, 255, 0.3);
+            transition: all 0.3s ease;
         }
-
-        .button:hover {
-            background: linear-gradient(to bottom right, rgb(255, 0, 255), rgb(1, 196, 255));
+        .button:hover, .select-difficulty:hover {
+            background: linear-gradient(45deg, #FF00FF, #00FFFF);
+            transform: scale(1.05);
+        }
+        .select-difficulty {
+            display: block;
+            margin: 20px auto;
+            width: 200px;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <img src="images/Logo.jpg" alt="Futuristic Header" class="header-image">
-        <h1>Manifest Speed Typing Test</h1>
-        <div class="iframe-container">
-            <iframe src="https://10fastfingers.com/widgets/ttembeddable/?dur=60&rand=1&words=teknologi|inovasi|efisiensi|produktivitas|keyboard|kinerja|kecepatan|mengetik|keterampilan|akurasi|latihan|tantangan|ujian|teks|penulisan|cepat|belajar|kuasai|tingkatkan|fokus|komputer|software|aplikasi|digital|internet|data|jaringan|hardware|pemrograman|sistem|informasi|pengembangan|robotik|kreativitas|ide|strategi|implementasi|analisis|visualisasi|proyek|ekspansi|metode|teori|praktik|manajemen|desain|pengujian|keamanan|akses|pengguna" scrolling="no"></iframe>
+        <img src="images/LOGO.png" alt="Futuristic Header" class="header-image">
+        <h1>Manifest Speed Typing</h1>
+        
+        <select id="difficultySelect" class="select-difficulty" onchange="changeDifficulty()">
+            <option value="easy">Mudah</option>
+            <option value="hard">Sulit</option>
+        </select>
+        
+        <div class="iframe-container" id="iframeContainer">
+            <!-- iframe akan diisi oleh JavaScript -->
         </div>
 
         <button class="button" onclick="window.location.href='send.html'">Kirim Data</button>
     </div>
+
+    <script>
+        const easyWords = "aku|saya|kamu|dia|kami|mereka|makan|minum|tidur|bangun|lari|jalan|duduk|berdiri|belajar|bermain|sekolah|rumah|taman|buku|pensil|kertas|meja|kursi|pintu|jendela|langit|bulan|bintang|matahari|bunga|pohon|daun|burung|kucing|anjing|ikan|buah|sayur|nasi|air|susu|roti|gula|garam|pagi|siang|malam|hari|minggu|bulan|tahun|warna|merah|biru|hijau|kuning|putih|hitam|besar|kecil|tinggi|pendek|gemuk|kurus|cepat|lambat|baik|jahat";
+        const hardWords = "implementasi|analisis|visualisasi|proyek|ekspansi|metode|teori|praktik|manajemen|desain|pengujian|keamanan|akses|pengguna|komputer|software|aplikasi|digital|internet|data|jaringan|hardware|pemrograman|sistem|informasi|pengembangan|robotik|kreativitas|ide|strategi|inovasi|teknologi|efisiensi|produktivitas|optimalisasi|integrasi|infrastruktur|konfigurasi|algoritma|protokol|enkripsi|virtualisasi|skalabilitas|interoperabilitas|otentikasi|otorisasi|kriptografi|arsitektur|mikroprosesor|telekomunikasi|cybersecurity|bioinformatika";
+
+        function changeDifficulty() {
+            const difficulty = document.getElementById('difficultySelect').value;
+            const words = difficulty === 'easy' ? easyWords : hardWords;
+            const iframeContainer = document.getElementById('iframeContainer');
+            iframeContainer.innerHTML = `<iframe src="https://10fastfingers.com/widgets/ttembeddable/?dur=60&rand=1&words=${words}" scrolling="yes"></iframe>`;
+        }
+
+        // Inisialisasi iframe saat halaman dimuat
+        window.onload = changeDifficulty;
+    </script>
 </body>
 </html>
