@@ -50,7 +50,7 @@
         .iframe-container {
             position: relative;
             width: 100%;
-            height: 600px; /* Increased height */
+            height: 600px;
             border-radius: 20px;
             overflow: hidden;
             background: rgba(255, 255, 255, 0.1);
@@ -104,8 +104,9 @@
         <h1>Manifest Speed Typing</h1>
         
         <select id="difficultySelect" class="select-difficulty" onchange="changeDifficulty()">
-            <option value="easy">Mudah</option>
-            <option value="hard">Sulit</option>
+            <option value="easy">1</option>
+            <option value="medium">2</option>
+            <option value="hard">3</option>
         </select>
         
         <div class="iframe-container" id="iframeContainer">
@@ -117,11 +118,21 @@
 
     <script>
         const easyWords = "aku|saya|kamu|dia|kami|mereka|makan|minum|tidur|bangun|lari|jalan|duduk|berdiri|belajar|bermain|sekolah|rumah|taman|buku|pensil|kertas|meja|kursi|pintu|jendela|langit|bulan|bintang|matahari|bunga|pohon|daun|burung|kucing|anjing|ikan|buah|sayur|nasi|air|susu|roti|gula|garam|pagi|siang|malam|hari|minggu|bulan|tahun|warna|merah|biru|hijau|kuning|putih|hitam|besar|kecil|tinggi|pendek|gemuk|kurus|cepat|lambat|baik|jahat";
+        const mediumWords = "sosial|ekonomi|budaya|teknologi|keuangan|pendidikan|pengetahuan|penelitian|lingkungan|industri|kesehatan|politik|pemerintah|agama|sejarah|filsafat|kebijakan|demokrasi|ekologi|etika|bioteknologi|genetika|feminisme|globalisasi|komunikasi|linguistik|psikologi|sosiologi|antropologi|ekstrakurikuler|prestasi|kompetisi|penghargaan|infrastruktur|logistik|manufaktur|pengelolaan|konstruksi|transportasi|urbanisasi|terjemahan|publikasi|rekayasa|distribusi";
         const hardWords = "implementasi|analisis|visualisasi|proyek|ekspansi|metode|teori|praktik|manajemen|desain|pengujian|keamanan|akses|pengguna|komputer|software|aplikasi|digital|internet|data|jaringan|hardware|pemrograman|sistem|informasi|pengembangan|robotik|kreativitas|ide|strategi|inovasi|teknologi|efisiensi|produktivitas|optimalisasi|integrasi|infrastruktur|konfigurasi|algoritma|protokol|enkripsi|virtualisasi|skalabilitas|interoperabilitas|otentikasi|otorisasi|kriptografi|arsitektur|mikroprosesor|telekomunikasi|cybersecurity|bioinformatika";
 
         function changeDifficulty() {
             const difficulty = document.getElementById('difficultySelect').value;
-            const words = difficulty === 'easy' ? easyWords : hardWords;
+            let words = "";
+
+            if (difficulty === 'easy') {
+                words = easyWords;
+            } else if (difficulty === 'medium') {
+                words = mediumWords;
+            } else {
+                words = hardWords;
+            }
+
             const iframeContainer = document.getElementById('iframeContainer');
             iframeContainer.innerHTML = `<iframe src="https://10fastfingers.com/widgets/ttembeddable/?dur=60&rand=1&words=${words}" scrolling="yes"></iframe>`;
         }
